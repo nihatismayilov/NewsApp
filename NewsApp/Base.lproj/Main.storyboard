@@ -90,7 +90,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="336" height="212"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="picture" translatesAutoresizingMaskIntoConstraints="NO" id="YD9-O1-ii6">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="picture" translatesAutoresizingMaskIntoConstraints="NO" id="YD9-O1-ii6">
                                                     <rect key="frame" x="8" y="16" width="320" height="180"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="320.12" id="Urh-ob-Jto"/>
@@ -233,7 +233,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4jF-m0-idV">
+                            <label clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4jF-m0-idV">
                                 <rect key="frame" x="368" y="503" width="16" height="16"/>
                                 <color key="backgroundColor" red="0.76862745099999996" green="0.76862745099999996" blue="0.76862745099999996" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -244,7 +244,7 @@
                                 <color key="textColor" red="0.76862745099999996" green="0.76862745099999996" blue="0.76862745099999996" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T3w-cD-GMB">
+                            <label clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T3w-cD-GMB">
                                 <rect key="frame" x="371" y="506" width="10" height="10"/>
                                 <color key="backgroundColor" red="0.67450980390000004" green="0.31764705879999999" blue="0.31764705879999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -296,6 +296,8 @@
                         <outlet property="collectionView" destination="wOz-UU-jcL" id="0KC-7o-bB2"/>
                         <outlet property="dateLabel" destination="dul-qr-RaU" id="ZqA-E3-eqR"/>
                         <outlet property="dotLabel" destination="L6n-9C-Gy0" id="A7s-q6-Nla"/>
+                        <outlet property="dotLabel2" destination="4jF-m0-idV" id="82a-9T-Vd5"/>
+                        <outlet property="dotLabel3" destination="T3w-cD-GMB" id="0x3-df-lZf"/>
                         <outlet property="latestTableView" destination="qXM-BF-b6K" id="541-YZ-onz"/>
                         <outlet property="searchBar" destination="cu8-Vm-gMI" id="eq9-PH-nc9"/>
                     </connections>

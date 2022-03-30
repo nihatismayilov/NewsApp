@@ -10,6 +10,8 @@ import UIKit
 class HomeViewController: UIViewController {
     
     @IBOutlet var dotLabel: UILabel!
+    @IBOutlet var dotLabel2: UILabel!
+    @IBOutlet var dotLabel3: UILabel!
     @IBOutlet var dateLabel: UILabel!
     @IBOutlet var collectionView: UICollectionView!
     @IBOutlet var searchBar: UISearchBar!
@@ -19,6 +21,8 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         
         dotLabel.layer.cornerRadius = 10
+        dotLabel2.layer.cornerRadius = 8
+        dotLabel3.layer.cornerRadius = 5
         
         collectionView.delegate = self
         collectionView.dataSource = self
