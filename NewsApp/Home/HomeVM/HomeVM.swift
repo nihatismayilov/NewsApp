@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Alamofire
 
 struct Trial {
     
@@ -13,6 +14,8 @@ struct Trial {
     let apiKey = "v9jAhBlFv8cxgRmUVNZv4gtbiIC1McOArN7itppIpzk"
     
     func tests() {
+        
+        //AF.request(
         
     }
     
