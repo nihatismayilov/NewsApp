@@ -9,6 +9,12 @@ import UIKit
 
 class SavedTableViewCell: UITableViewCell {
 
+    @IBOutlet var savedTopicLabel: UILabel!
+    @IBOutlet var savedTitleLabel: UILabel!
+    @IBOutlet var savedDateLabel: UILabel!
+    @IBOutlet var savedAuthorLabel: UILabel!
+    @IBOutlet var savedImageView: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

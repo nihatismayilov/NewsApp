@@ -8,18 +8,7 @@
 import Foundation
 import Alamofire
 
-struct Trial {
-    
-    let url = "https://api.newscatcherapi.com"
-    let apiKey = "v9jAhBlFv8cxgRmUVNZv4gtbiIC1McOArN7itppIpzk"
-    
-    func tests() {
-        
-        //AF.request(
-        
-    }
-    
-}
+
 
 
 
@@ -27,12 +16,6 @@ struct Trial {
 struct SearchViewModel {
     
     let searchUrl = "https://api.newscatcherapi.com/v2/search?q=Tesla"
-    
-    
-    // v9jAhBlFv8cxgRmUVNZv4gtbiIC1McOArN7itppIpzk
-    
-    
-    
     
     func test(_ SearchNewsTitle: String, completion: @escaping (SearchNews) -> ()) {
         
