@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct SearchNews: Decodable {
+struct SearchNewsModel: Decodable {
     let articles: [SearchData]?
 }
 
@@ -20,4 +20,5 @@ struct SearchData: Decodable {
     let summary: String?
     let topic: String?
     let media: String?
+    let twitter_account: String?
 }

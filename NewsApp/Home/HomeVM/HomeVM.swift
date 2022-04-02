@@ -6,106 +6,72 @@
 //
 
 import Foundation
-import Alamofire
-
-
-
-
-
-
-struct SearchViewModel {
-    
-    let searchUrl = "https://api.newscatcherapi.com/v2/search?q=Tesla"
-    
-    func test(_ SearchNewsTitle: String, completion: @escaping (SearchNews) -> ()) {
-        
-        let url = URL(string: "http://localhost:1337/parse/test")!
-           let requestUrl = url    // Prepare URL Request Object
-           var request = URLRequest(url: requestUrl)
-        
-        
-           
-           request.setValue("application-idValue", forHTTPHeaderField: "X-Parse-Application-Id")
-           request.setValue("secret-keyValue", forHTTPHeaderField: "b10bb5d0587e4518a20031605636ab85")
-           
-           request.httpMethod = "POST"
-        
-    }
-    
-    
-    
-    func performMoviesRequest(_ SearchNewsTitle: String, completion: @escaping (SearchNews?) -> ()) {
-        
-        let url = URL(string: searchUrl)
-        let request = NSURLRequest(url: url!)
-        
-        
-        let replaced = SearchNewsTitle.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)
-        let urlString = searchUrl + (replaced ?? "")
-        
-        if let url = URL(string: urlString) {
-            let session = URLSession.shared
-            
-            //print(url)
-            
-            let task = session.dataTask(with: url) { data, response, error in
-                
-                if let error = error {
-                    print(error.localizedDescription)
-                    completion(nil)
-                } else {
-                    if data != nil {
-                        do {
-                            let decodeData = try JSONDecoder().decode(SearchNews.self, from: data!)
-                            //print(decodeData)
-                            completion(decodeData)
-                            
-                        } catch {
-                            print(error.localizedDescription)
-                        }
-                        
-                    }
-                }
-            }
-            task.resume()
-        }
-        
-    }
-}
 
 struct LatestNewsViewModel {
     
-    let latestNewsUrl = "http://www.omdbapi.com/?i=tt3896198&apikey=8bd48c99&s="
-    
-    func performMoviesRequest(completion: @escaping (SearchNews?) -> ()) {
+    func showLatestNews(_LatestLanguage: String, completion: @escaping (LatestNewsModel?) -> ()) {
         
-        if let url = URL(string: latestNewsUrl) {
-            let session = URLSession.shared
-            
-            //print(url)
-            
-            let task = session.dataTask(with: url) { data, response, error in
-                
-                if let error = error {
-                    print(error.localizedDescription)
-                    completion(nil)
-                } else {
-                    if data != nil {
-                        do {
-                            let decodeData = try JSONDecoder().decode(SearchNews.self, from: data!)
-                            //print(decodeData)
-                            completion(decodeData)
-                            
-                        } catch {
-                            print(error.localizedDescription)
-                        }
-                        
+        let string = "https://api.newscatcherapi.com/v2/latest_headlines?lang=\(_LatestLanguage)&countries=US&page_size=5"
+        
+        let url = URL(string: string)
+        let request = NSMutableURLRequest(url: url! as URL)
+        request.setValue("v9jAhBlFv8cxgRmUVNZv4gtbiIC1McOArN7itppIpzk", forHTTPHeaderField: "x-api-key")
+        request.httpMethod = "GET"
+        let session = URLSession.shared
+
+        let task = session.dataTask(with: request as URLRequest) { (data, response, error) -> Void in
+            if let error = error {
+                print(error.localizedDescription)
+            } else {
+                if let data = data {
+                    do {
+                        let decode = try JSONDecoder().decode(LatestNewsModel.self, from: data)
+                        print(decode)
+                        completion(decode)
+                    } catch{
+                        print(error.localizedDescription)
                     }
-                }
             }
-            task.resume()
-        }
         
+            }
+        }
+        task.resume()
+    }
+
+}
+
+struct SearchViewModel {
+    
+    func searchForNews(_ SearchText: String, SearchLanguage: String, completion: @escaping (SearchNewsModel?) -> ()) {
+        
+        let text = SearchText.replacingOccurrences(of: " ", with: "%20")
+        
+        let string = "https://api.newscatcherapi.com/v2/search?lang=\(SearchLanguage)&countries=US&q=\(text)"
+        
+        guard let url = URL(string: string) else { return }
+        let request = NSMutableURLRequest(url: url as URL)
+        request.setValue("v9jAhBlFv8cxgRmUVNZv4gtbiIC1McOArN7itppIpzk", forHTTPHeaderField: "x-api-key")
+        request.httpMethod = "GET"
+        let session = URLSession.shared
+
+        let task = session.dataTask(with: request as URLRequest) { (data, response, error) -> Void in
+            if let error = error {
+                print(error.localizedDescription)
+            } else {
+                if let data = data {
+                    do {
+                        let decode = try JSONDecoder().decode(SearchNewsModel.self, from: data)
+                        print(decode)
+                        completion(decode)
+                    } catch{
+                        print(error.localizedDescription)
+                    }
+            }
+        
+            }
+        }
+        task.resume()
     }
 }
+
 

@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		9C56BE584B924D7832110E6A /* Pods_NewsApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6572A25D006FC3CBD29DAE3 /* Pods_NewsApp.framework */; };
+		B83330C627F6E9B200F7B732 /* DetailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83330C527F6E9B200F7B732 /* DetailsModel.swift */; };
+		B83330C827F6E9DC00F7B732 /* DetailsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83330C727F6E9DC00F7B732 /* DetailsVM.swift */; };
 		B8812D6E27F4620B0020616F /* SavedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8812D6D27F4620B0020616F /* SavedTableViewCell.swift */; };
 		B89B3A8727F389A100EFF215 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89B3A8627F389A100EFF215 /* AppDelegate.swift */; };
 		B89B3A8927F389A100EFF215 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89B3A8827F389A100EFF215 /* SceneDelegate.swift */; };
@@ -28,6 +30,8 @@
 /* Begin PBXFileReference section */
 		0FA9CC17418BA48F6378A040 /* Pods-NewsApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NewsApp.debug.xcconfig"; path = "Target Support Files/Pods-NewsApp/Pods-NewsApp.debug.xcconfig"; sourceTree = "<group>"; };
 		B6572A25D006FC3CBD29DAE3 /* Pods_NewsApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NewsApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B83330C527F6E9B200F7B732 /* DetailsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsModel.swift; sourceTree = "<group>"; };
+		B83330C727F6E9DC00F7B732 /* DetailsVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsVM.swift; sourceTree = "<group>"; };
 		B8812D6D27F4620B0020616F /* SavedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedTableViewCell.swift; sourceTree = "<group>"; };
 		B89B3A8327F389A100EFF215 /* NewsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B89B3A8627F389A100EFF215 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -186,6 +190,7 @@
 		B8BFB41327F4953C00D4E17C /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				B83330C527F6E9B200F7B732 /* DetailsModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -202,6 +207,7 @@
 		B8BFB41527F4954600D4E17C /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				B83330C727F6E9DC00F7B732 /* DetailsVM.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -336,8 +342,10 @@
 				B8812D6E27F4620B0020616F /* SavedTableViewCell.swift in Sources */,
 				B89B3AAD27F3CAE100EFF215 /* HomeVM.swift in Sources */,
 				B89B3A8727F389A100EFF215 /* AppDelegate.swift in Sources */,
+				B83330C827F6E9DC00F7B732 /* DetailsVM.swift in Sources */,
 				B89B3AAB27F3CAC000EFF215 /* SearchNewsModel.swift in Sources */,
 				B89B3A9B27F39E1400EFF215 /* SavedViewController.swift in Sources */,
+				B83330C627F6E9B200F7B732 /* DetailsModel.swift in Sources */,
 				B89B3AA927F3CAA700EFF215 /* LatestNewsModel.swift in Sources */,
 				B89B3A8927F389A100EFF215 /* SceneDelegate.swift in Sources */,
 				B8BFB41927F498CC00D4E17C /* ChildViewController.swift in Sources */,
@@ -488,6 +496,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = U243U99T75;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = NewsApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -516,6 +525,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = U243U99T75;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = NewsApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

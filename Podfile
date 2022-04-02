@@ -7,6 +7,7 @@ target 'NewsApp' do
 
   # Pods for NewsApp
 
-pod 'Alamofire'
+pod 'SDWebImage'
+pod 'DropDown'
 
 end

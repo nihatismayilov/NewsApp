@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct LatestNews: Decodable {
+struct LatestNewsModel: Decodable {
     let articles: [NewsData]?
 }
 
@@ -20,4 +20,5 @@ struct NewsData: Decodable {
     let summary: String?
     let topic: String?
     let media: String?
+    let twitter_account: String?
 }
