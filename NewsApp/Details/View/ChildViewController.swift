@@ -29,7 +29,7 @@ class ChildViewController: UIViewController {
         super.viewDidLoad()
         containerTopicLabel.layer.cornerRadius = 10
         
-        print("TWITTER TEXT : \(twitterText)")
+        //print("Twitter account: \(twitterText)")
         
         showDetails()
         
@@ -60,12 +60,18 @@ class ChildViewController: UIViewController {
     }
     
     @objc func authorClicked() {
-        if let text = twitterText {
-            let safariVC = SFSafariViewController(url: URL(string: "https://twitter.com/\(text)")  ?? URL(string: "https://twitter.com/nihatismayilov0")!)
+        if twitterText != "No data" && twitterText != "" {
+            let safariVC = SFSafariViewController(url: URL(string: "https://twitter.com/\(twitterText!)")!)
             present(safariVC, animated: true)
+        } else {
+            makeALert()
         }
     }
     
-    
-    
+    func makeALert() {
+        let alert = UIAlertController(title: "Error!", message: "Couldn't find twitter account", preferredStyle: UIAlertController.Style.alert)
+        let okButton = UIAlertAction(title: "OK", style: UIAlertAction.Style.default)
+        alert.addAction(okButton)
+        present(alert, animated: true)
+    }
 }

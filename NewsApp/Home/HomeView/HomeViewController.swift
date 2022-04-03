@@ -60,6 +60,7 @@ class HomeViewController: UIViewController {
         getDate()
         showLatestNews()
         
+        // Delgates and Data Sources
         collectionView.delegate = self
         collectionView.dataSource = self
         searchTableView.delegate = self
@@ -69,7 +70,6 @@ class HomeViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
         self.tabBarController?.tabBar.items![0].image = UIImage(systemName: "house.fill")
         self.tabBarController?.tabBar.items![1].image = UIImage(systemName: "bookmark")
         
@@ -116,7 +116,6 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
         let newsMedia = latestNewsModel?.articles?[indexPath.row].media ?? "select"
         let newsTopic = latestNewsModel?.articles?[indexPath.row].topic ?? "No data"
         let newsTitle = latestNewsModel?.articles?[indexPath.row].title ?? "No data"
@@ -124,7 +123,8 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         let newsExcerpt = latestNewsModel?.articles?[indexPath.row].excerpt ?? "No data"
         let newsSummary = latestNewsModel?.articles?[indexPath.row].summary ?? "No data"
         let newsLink = latestNewsModel?.articles?[indexPath.row].link ?? "No data"
-        let newsTwitterAccount = searchNewsModel?.articles?[indexPath.row].twitter_account ?? ""
+        let newsTwitterAccount = searchNewsModel?.articles?[indexPath.row].twitter_account ?? "No data"
+        let newsDate = latestNewsModel?.articles?[indexPath.row].published_date ?? "No data"
         
         let board = UIStoryboard(name: "Main", bundle: nil)
         let detailsVC = board.instantiateViewController(withIdentifier: "details") as! DetailsViewController
@@ -137,7 +137,15 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         detailsVC.summaryAPI = newsSummary
         detailsVC.linkAPI = newsLink
         detailsVC.twitterAPI = newsTwitterAccount
-
+        detailsVC.dateAPI = newsDate
+        detailsVC.from = "Home"
+        
+        if Helper.sharedInstance.newsTitleArray?.contains(detailsVC.titleAPI ?? "") ?? false{
+            detailsVC.menu.dataSource[0] = "Un-Save"
+        }else {
+            detailsVC.menu.dataSource[0] = "Save"
+        }
+        
         self.navigationController?.pushViewController(detailsVC, animated: true)
     }
 }
@@ -155,17 +163,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         cell.tableImageView.layer.cornerRadius = 18
         cell.topicLabel.text = searchNewsModel?.articles?[indexPath.row].topic ?? "No data"
         cell.titleLabel.text = searchNewsModel?.articles?[indexPath.row].title ?? "No data"
-        
-        
-        
-        //cell.dateLabel.text = searchNewsModel?.articles?[indexPath.row].published_date ?? "No data"
-        let date = searchNewsModel?.articles?[indexPath.row].published_date
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "MMM d, yyyy"
-            dateFormatter.dateStyle = .long
-        //cell.dateLabel.text = "\(dateFormatter.date(from: date ?? ""))"
-        
-        
+        cell.dateLabel.text = searchNewsModel?.articles?[indexPath.row].published_date ?? "No data"
         cell.authorLabel.text = searchNewsModel?.articles?[indexPath.row].author ?? "No data"
         cell.tableImageView.sd_setImage(with: URL(string: searchNewsModel?.articles?[indexPath.row].media ?? "select"))
         return cell
@@ -180,7 +178,8 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         let newsExcerpt = searchNewsModel?.articles?[indexPath.row].excerpt ?? "No data"
         let newsSummary = searchNewsModel?.articles?[indexPath.row].summary ?? "No data"
         let newsLink = searchNewsModel?.articles?[indexPath.row].link ?? "No data"
-        let newsTwitterAccount = searchNewsModel?.articles?[indexPath.row].twitter_account ?? ""
+        let newsTwitterAccount = searchNewsModel?.articles?[indexPath.row].twitter_account ?? "No data"
+        let newsDate = searchNewsModel?.articles?[indexPath.row].published_date ?? "No data"
 
         let board = UIStoryboard(name: "Main", bundle: nil)
         let detailsVC = board.instantiateViewController(withIdentifier: "details") as! DetailsViewController
@@ -193,6 +192,8 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         detailsVC.summaryAPI = newsSummary
         detailsVC.linkAPI = newsLink
         detailsVC.twitterAPI = newsTwitterAccount
+        detailsVC.dateAPI = newsDate
+        detailsVC.from = "Home"
 
         self.navigationController?.pushViewController(detailsVC, animated: true)
     }
@@ -201,17 +202,17 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
 
 // Search Settings
 extension HomeViewController: UISearchBarDelegate {
-    
+
     @objc func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         self.search = searchText
-        searchNews.searchForNews(search, SearchLanguage: language) { search in
-            self.searchNewsModel = search
-            DispatchQueue.main.async {
-                self.searchTableView.reloadData()
-            }
-        }
+//        searchNews.searchForNews(search, SearchLanguage: language) { search in
+//            self.searchNewsModel = search
+//            DispatchQueue.main.async {
+//                self.searchTableView.reloadData()
+//            }
+//        }
     }
-    
+
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
         searchNews.searchForNews(search, SearchLanguage: language) { search in
@@ -222,4 +223,3 @@ extension HomeViewController: UISearchBarDelegate {
         }
     }
 }
-

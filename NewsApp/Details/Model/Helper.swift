@@ -6,3 +6,19 @@
 //
 
 import Foundation
+
+struct Helper {
+    static var sharedInstance = Helper()
+    
+    var newsMediaArray: [String]? = []
+    var newsTopicArray: [String]? = []
+    var newsTitleArray: [String]? = []
+    var newsAuthorArray: [String]? = []
+    var newsTwitterAccountArray: [String]? = []
+    var newsExcerptArray: [String]? = []
+    var newsSummaryArray: [String]? = []
+    var newsLinkArray: [String]? = []
+    var newsDateArray: [String]? = []
+    
+    private init() {}
+}

@@ -15,7 +15,7 @@ struct LatestNewsViewModel {
         
         let url = URL(string: string)
         let request = NSMutableURLRequest(url: url! as URL)
-        request.setValue("v9jAhBlFv8cxgRmUVNZv4gtbiIC1McOArN7itppIpzk", forHTTPHeaderField: "x-api-key")
+        request.setValue("6_rfZ5tO1OJwzeBhPXXzBHaIk19c1VbelA6mrshdeMs", forHTTPHeaderField: "x-api-key")
         request.httpMethod = "GET"
         let session = URLSession.shared
 
@@ -50,7 +50,7 @@ struct SearchViewModel {
         
         guard let url = URL(string: string) else { return }
         let request = NSMutableURLRequest(url: url as URL)
-        request.setValue("v9jAhBlFv8cxgRmUVNZv4gtbiIC1McOArN7itppIpzk", forHTTPHeaderField: "x-api-key")
+        request.setValue("6_rfZ5tO1OJwzeBhPXXzBHaIk19c1VbelA6mrshdeMs", forHTTPHeaderField: "x-api-key")
         request.httpMethod = "GET"
         let session = URLSession.shared
 
